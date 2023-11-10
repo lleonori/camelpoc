@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteRepositoriesConfiguration">
+    <remote-repository>
+      <option name="id" value="parent" />
+      <option name="name" value="parent -- bootstrap" />
+      <option name="url" value="http://10.0.11.51:8081/nexus/content/repositories/babelreleases" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="babelrepo" />
+      <option name="name" value="babelrepo" />
+      <option name="url" value="http://10.0.11.51:8081/nexus/content/repositories/babelrepo" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Central Repository" />
+      <option name="url" value="https://repo.maven.apache.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="gitlab-maven" />
+      <option name="name" value="gitlab-maven" />
+      <option name="url" value="https://git.par-tec.it/api/v4/groups/60/-/packages/maven" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Maven Central repository" />
+      <option name="url" value="https://repo1.maven.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="babelreleases" />
+      <option name="name" value="babelreleases" />
+      <option name="url" value="http://10.0.11.51:8081/nexus/content/repositories/babelreleases" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="jboss-deprecated" />
+      <option name="name" value="jboss-deprecated" />
+      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/deprecated" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="codelds" />
+      <option name="name" value="codelds" />
+      <option name="url" value="https://code.lds.org" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="repo1" />
+      <option name="name" value="repo1" />
+      <option name="url" value="https://repo1.maven.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="svnkit" />
+      <option name="name" value="svnkit" />
+      <option name="url" value="https://maven.tmatesoft.com/content/repositories/releases/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="jboss-releases" />
+      <option name="name" value="jboss-releases" />
+      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/releases" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="thirdparty" />
+      <option name="name" value="thirdparty" />
+      <option name="url" value="http://10.0.11.51:8081/nexus/content/repositories/thirdparty" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="jboss.community" />
+      <option name="name" value="JBoss Community repository" />
+      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="jboss-thirdparty" />
+      <option name="name" value="jboss-thirdparty" />
+      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/thirdparty-releases" />
+    </remote-repository>
+  </component>
+</project>
