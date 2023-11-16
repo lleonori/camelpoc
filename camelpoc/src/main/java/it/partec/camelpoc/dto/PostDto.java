@@ -12,7 +12,7 @@ import org.apache.camel.dataformat.bindy.annotation.DataField;
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class ContactJsonDto {
+public class PostDto {
 
     @DataField(pos = 1)
     private Integer userId;
