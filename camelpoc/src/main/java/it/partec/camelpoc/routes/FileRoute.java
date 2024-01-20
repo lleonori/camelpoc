@@ -14,6 +14,20 @@ public class FileRoute extends RouteBuilder {
                 .handled(true)
                 .maximumRedeliveries(3);
 
+//        from("file:contacts/incoming?noop=true")
+//                .choice()
+//                .when(header("CamelFileName").endsWith(".json")).to("seda:b")
+//                .when(header("CamelFileName").endsWith(".csv")).to("seda:c")
+//                .otherwise().to("seda:d");
+//
+//        from("seda:b")
+//                .log("File: ${header.CamelFileName}");
+//
+//        from("seda:c")
+//                .log("File: ${header.CamelFileName}");
+//
+//        from("seda:d")
+//                .log("File: ${header.CamelFileName}");
 
         from("file:contacts/incoming?noop=true")
                 .routeId("fileRoute")
