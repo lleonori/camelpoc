@@ -1,28 +1,32 @@
 package it.partec.camelpoc.routes;
 
+import it.partec.camelpoc.OrderRouter;
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
 
-import java.io.FileNotFoundException;
-
 @Component
 public class FileRoute extends RouteBuilder {
+
     @Override
     public void configure() {
-        onException(FileNotFoundException.class)
-                .to("file:log")
-                .handled(true)
-                .maximumRedeliveries(3);
-
-
-        from("file:contacts/incoming?noop=true")
+        from("file:orders?noop=true")
                 .routeId("fileRoute")
                 .log("File: ${header.CamelFileName}")
-                .doTry()
-                .process(new it.partec.camelpoc.processors.ProcessorAddCSVColums())
-                .doCatch(FileNotFoundException.class)
-                .doFinally()
-                .to("file:contacts/outgoing?fileName=processedContactsFile.csv")
-                .end();
+                .log("json body: ${body}")
+                .split().tokenizeXML("regola")
+//                .split(xpath("/configurazione/regole/regola1"))
+                .recipientList().method(OrderRouter.class, "routeOrder");
+
+        from("direct:onlineOrder")
+                .log("Processing online order: ${body}");
+
+        from("direct:phoneOrder")
+                .log("Processing phone order: ${body}");
+
+        from("direct:vipOrder")
+                .log("Processing VIP order: ${body}");
+
+        from("direct:errorOrder")
+                .log("Error: Unrecognized channel - ${header.channel}. Order: ${body}");
     }
 }
