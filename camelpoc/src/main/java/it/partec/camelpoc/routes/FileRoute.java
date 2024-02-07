@@ -1,42 +1,42 @@
 package it.partec.camelpoc.routes;
 
+import it.partec.camelpoc.aggregations.StringAggregationStrategy;
 import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.model.dataformat.JsonLibrary;
 import org.springframework.stereotype.Component;
 
-import java.io.FileNotFoundException;
+import java.util.List;
 
 @Component
 public class FileRoute extends RouteBuilder {
     @Override
     public void configure() {
-        onException(FileNotFoundException.class)
-                .to("file:log")
+
+        onException(Exception.class)
                 .handled(true)
-                .maximumRedeliveries(3);
+                .setHeader("CamelError", constant("CamelError"))
+                .wireTap("direct:test3");
 
-//        from("file:contacts/incoming?noop=true")
-//                .choice()
-//                .when(header("CamelFileName").endsWith(".json")).to("seda:b")
-//                .when(header("CamelFileName").endsWith(".csv")).to("seda:c")
-//                .otherwise().to("seda:d");
-//
-//        from("seda:b")
-//                .log("File: ${header.CamelFileName}");
-//
-//        from("seda:c")
-//                .log("File: ${header.CamelFileName}");
-//
-//        from("seda:d")
-//                .log("File: ${header.CamelFileName}");
-
-        from("file:contacts/incoming?noop=true")
+        from("file:recipient?noop=true")
                 .routeId("fileRoute")
                 .log("File: ${header.CamelFileName}")
-                .doTry()
-                .process(new it.partec.camelpoc.processors.ProcessorAddCSVColums())
-                .doCatch(FileNotFoundException.class)
-                .doFinally()
-                .to("file:contacts/outgoing?fileName=processedContactsFile.csv")
-                .end();
+                .unmarshal().json(JsonLibrary.Jackson, List.class)
+                .split(body())
+                .marshal().json(JsonLibrary.Jackson)
+                .log("${body}")
+                .aggregate(jsonpath("$.userId"), new StringAggregationStrategy())
+                .completionSize(3)
+                .log("${body}")
+                .setHeader("recipientListHeader", body())
+                .recipientList(header("recipientListHeader").tokenize(","));
+
+        from("direct:test1")
+                .log("Here1: ${body}");
+
+        from("direct:test2")
+                .log("Here2");
+
+        from("direct:test3")
+                .log("Here3");
     }
 }

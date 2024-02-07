@@ -7,14 +7,14 @@
       <option name="url" value="http://10.0.11.51:8081/nexus/content/repositories/babelreleases" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="babelrepo" />
-      <option name="name" value="babelrepo" />
-      <option name="url" value="http://10.0.11.51:8081/nexus/content/repositories/babelrepo" />
-    </remote-repository>
-    <remote-repository>
       <option name="id" value="central" />
       <option name="name" value="Central Repository" />
       <option name="url" value="https://repo.maven.apache.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="babelrepo" />
+      <option name="name" value="babelrepo" />
+      <option name="url" value="http://10.0.11.51:8081/nexus/content/repositories/babelrepo" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="gitlab-maven" />
@@ -67,9 +67,19 @@
       <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="portale-sed" />
+      <option name="name" value="portale-sed" />
+      <option name="url" value="https://git.par-tec.it/api/v4/groups/109/-/packages/maven" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="jboss-thirdparty" />
       <option name="name" value="jboss-thirdparty" />
       <option name="url" value="https://repository.jboss.org/nexus/content/repositories/thirdparty-releases" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="red-hat-ga-repository" />
+      <option name="name" value="red-hat-ga-repository" />
+      <option name="url" value="https://maven.repository.redhat.com/ga" />
     </remote-repository>
   </component>
 </project>

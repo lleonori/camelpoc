@@ -68,6 +68,11 @@
             <version>${camel.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-jsonpath</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
 <!--        <dependency>-->
 <!--            <groupId>org.apache.camel</groupId>-->
 <!--            <artifactId>camel-management</artifactId>-->
